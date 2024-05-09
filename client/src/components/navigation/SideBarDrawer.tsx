@@ -9,6 +9,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import { Link } from "react-router-dom";
+import NavConstants from "./navConstants";
 
 //function SideBarDrawer(_props: any) {
 function SideBarDrawer({ state, setState, toggleDrawer }) {
@@ -16,11 +18,11 @@ function SideBarDrawer({ state, setState, toggleDrawer }) {
   const toggleDrawerv = (newOpen: boolean) => () => {
     setState(newOpen);
   };
-  
+
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawerv(false)}>
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        {NavConstants.map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -33,9 +35,12 @@ function SideBarDrawer({ state, setState, toggleDrawer }) {
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
+        {["Reports"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
+              <Link className="nav-link active" to="/functions">
+
+              </Link>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
